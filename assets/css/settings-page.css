@@ -1,0 +1,7 @@
+.coeditor-airship__tab-pane {
+	display: none;
+}
+
+.coeditor-airship__tab-pane.active {
+	display: block;
+}

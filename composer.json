@@ -1,0 +1,17 @@
+{
+  "name": "coeditor/wordpress-airship",
+  "description": "A WordPress plugin for integrating Airship functionality into a WordPress site",
+  "type": "wordpress-plugin",
+  "license": "closed-source license",
+  "autoload": {
+    "psr-4": {
+      "Coeditor\\WordpressAirship\\Classes\\": "includes/classes/"
+    }
+  },
+  "require": {
+    "composer/installers": "^1.11"
+  },
+  "extra": {
+    "installer-name": "coeditor-airship"
+  }
+}

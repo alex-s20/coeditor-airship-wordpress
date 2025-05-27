@@ -1,0 +1,18 @@
+.coeditor-airship__segments {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-top: 1rem;
+
+	& .coeditor-airship__segments-card {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		background-color: var(--coeditor-airship-card-background);
+		box-shadow: var(--coeditor-airship-card-shadow);
+		background-color: #fff;
+		padding: 1rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+}
