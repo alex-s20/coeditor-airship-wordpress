@@ -17,7 +17,8 @@
 }
 
 .coeditor-airship__scheduled-notification-preview-ios,
-.coeditor-airship__scheduled-notification-preview-android {
+.coeditor-airship__scheduled-notification-preview-android,
+.coeditor-airship__scheduled-notification-preview-web {
 	background-color: rgba(0, 0, 0, 0.1);
 	display: flex;
 	gap: 1rem;
@@ -27,20 +28,23 @@
 }
 
 .coeditor-airship__scheduled-notification-preview-ios .notification-title,
-.coeditor-airship__scheduled-notification-preview-android .notification-title {
+.coeditor-airship__scheduled-notification-preview-android .notification-title,
+.coeditor-airship__scheduled-notification-preview-web .notification-title {
 	font-size: 1.1rem;
 	font-weight: bold;
 	margin-bottom: 0.4rem;
 }
 
 .coeditor-airship__scheduled-notification-preview-ios .notification-body,
-.coeditor-airship__scheduled-notification-preview-android .notification-body {
+.coeditor-airship__scheduled-notification-preview-android .notification-body,
+.coeditor-airship__scheduled-notification-preview-web .notification-body {
 	font-size: 0.9rem;
 	color: #555;
 }
 
 .coeditor-airship__scheduled-notification-preview-ios img,
-.coeditor-airship__scheduled-notification-preview-android img {
+.coeditor-airship__scheduled-notification-preview-android img,
+.coeditor-airship__scheduled-notification-preview-web img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
@@ -79,6 +83,14 @@
 
 .coeditor-airship__android-icon {
 	background-color: #73bb56;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+}
+
+.coeditor-airship__web-icon {
+	background-color: #0073aa;
 	border-radius: 0.5rem;
 	padding: 0.5rem;
 	width: 2rem;
