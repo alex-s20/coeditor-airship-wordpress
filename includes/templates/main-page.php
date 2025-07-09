@@ -93,7 +93,7 @@ if ( isset( $_GET['confirm_delete'] ) ) {
 
 								<div class="notification-content">
 									<div class="notification-title">
-										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['title'] ?? 'No IOS notifications scheduled' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['title'] ?? 'No iOS notifications scheduled' ); ?>
 									</div>
 									<div class="notification-body">
 										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['body'] ?? '' ); ?>
