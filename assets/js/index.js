@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	const tabs = document.querySelectorAll(".coeditor-airship__nav-tab");
 	const tabPanes = document.querySelectorAll(".coeditor-airship__tab-pane");
 
+	/**
+	 * Activates the specified tab and stores the selection in localStorage
+	 * @param {string} tabId - The ID selector of the tab content to activate (e.g., "#main-tab1")
+	 */
 	function activateTab(tabId) {
 		tabs.forEach(tab => tab.classList.remove("nav-tab-active"));
 		tabPanes.forEach(pane => pane.classList.remove("active"));
@@ -16,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
+	// Restore previously active tab on page load (or default to first tab)
 	const savedTab = localStorage.getItem("activeTab");
 	if (savedTab && document.querySelector(savedTab)) {
 		activateTab(savedTab);
@@ -54,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	});
 
+	/**
+	 * Loads the most recent push notifications
+	 */
 	function loadNotifications() {
 		const container = document.querySelector('#main-tab2');
 		if (!container) return;
