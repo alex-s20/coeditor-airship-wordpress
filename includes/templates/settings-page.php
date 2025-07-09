@@ -9,30 +9,30 @@
 	<h1><?php esc_html_e( 'WordPress » Airship settings', 'coeditor-airship' ); ?></h1>
 
 	<nav class="nav-tab-wrapper">
-		<a href="#tab1" class="coeditor-airship__nav-tab nav-tab nav-tab-active"><?php esc_html_e( 'General', 'coeditor-airship' ); ?></a>
-		<a href="#tab2" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'Desktop notifications', 'coeditor-airship' ); ?></a>
-		<a href="#tab3" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'Permissions', 'coeditor-airship' ); ?></a>
-		<a href="#tab4" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'API settings', 'coeditor-airship' ); ?></a>
+		<a href="#settings-tab1" class="coeditor-airship__nav-tab nav-tab nav-tab-active"><?php esc_html_e( 'General', 'coeditor-airship' ); ?></a>
+		<a href="#settings-tab2" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'Desktop notifications', 'coeditor-airship' ); ?></a>
+		<a href="#settings-tab3" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'Permissions', 'coeditor-airship' ); ?></a>
+		<a href="#settings-tab4" class="coeditor-airship__nav-tab nav-tab"><?php esc_html_e( 'API settings', 'coeditor-airship' ); ?></a>
 	</nav>
 
 	<div class="coeditor-airship__tab-content">
-		<div id="tab1" class="coeditor-airship__tab-pane active">
+		<div id="settings-tab1" class="coeditor-airship__tab-pane active">
 			<h2><?php esc_html_e( 'General Settings', 'coeditor-airship' ); ?></h2>
 		</div>
 
-		<div id="tab2" class="coeditor-airship__tab-pane">
+		<div id="settings-tab2" class="coeditor-airship__tab-pane">
 			<h2><?php esc_html_e( 'Desktop notifications', 'coeditor-airship' ); ?></h2>
 			<p><?php esc_html_e( 'More advanced settings go here.', 'coeditor-airship' ); ?></p>
 			Enabled<br />
 			Show prompt only on homepage<br />
 		</div>
 
-		<div id="tab3" class="coeditor-airship__tab-pane">
+		<div id="settings-tab3" class="coeditor-airship__tab-pane">
 			<h2><?php esc_html_e( 'Permissions', 'coeditor-airship' ); ?></h2>
 			<p><?php esc_html_e( 'Information about the plugin.', 'coeditor-airship' ); ?></p>
 		</div>
 
-		<div id="tab4" class="coeditor-airship__tab-pane">
+		<div id="settings-tab4" class="coeditor-airship__tab-pane">
 			<h2><?php esc_html_e( 'API settings', 'coeditor-airship' ); ?></h2>
 
 			<form method="post" action="options.php">
