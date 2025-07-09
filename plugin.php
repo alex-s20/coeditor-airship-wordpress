@@ -3,7 +3,7 @@
  * Plugin Name:       Coeditor Airship
  * Plugin URI:        https://coeditor.com/
  * Description:       Integrate your Airship notifications setup with WordPress.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 5.7
  * Requires PHP:      8.0
  * Author:            Coeditor
