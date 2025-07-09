@@ -154,3 +154,19 @@
 		}
 	}
 }
+
+.coeditor-airship__tab-nav {
+	margin-bottom: 1rem;
+}
+
+.coeditor-airship__nav-tab {
+	text-decoration: none;
+}
+
+.coeditor-airship__tab-pane {
+	display: none;
+}
+
+.coeditor-airship__tab-pane.active {
+	display: block;
+}
