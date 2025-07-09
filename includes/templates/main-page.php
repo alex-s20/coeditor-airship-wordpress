@@ -71,10 +71,10 @@ if ( isset( $_GET['confirm_delete'] ) ) {
 
 								<div class="notification-content">
 									<div class="notification-title">
-										<?php echo esc_html( $notification['push']['notification']['web']['alert']['title'] ?? 'No title' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['web']['alert']['title'] ?? 'No web notifications scheduled' ); ?>
 									</div>
 									<div class="notification-body">
-										<?php echo esc_html( $notification['push']['notification']['web']['alert']['body'] ?? 'No message' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['web']['alert']['body'] ?? '' ); ?>
 									</div>
 
 									<?php if ( ! empty( $notification['push']['notification']['web']['icon'] ) ) : ?>
@@ -93,10 +93,10 @@ if ( isset( $_GET['confirm_delete'] ) ) {
 
 								<div class="notification-content">
 									<div class="notification-title">
-										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['title'] ?? 'No title' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['title'] ?? 'No IOS notifications scheduled' ); ?>
 									</div>
 									<div class="notification-body">
-										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['body'] ?? 'No message' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['ios']['alert']['body'] ?? '' ); ?>
 									</div>
 									<?php if ( ! empty( $notification['push']['notification']['ios']['media_attachment']['url'] ) ) : ?>
 										<img src="<?php echo esc_url( $notification['push']['notification']['ios']['media_attachment']['url'] ); ?>"
@@ -114,7 +114,7 @@ if ( isset( $_GET['confirm_delete'] ) ) {
 
 								<div class="notification-content">
 									<div class="notification-title">
-										<?php echo esc_html( $notification['push']['notification']['android']['title'] ?? 'No title' ); ?>
+										<?php echo esc_html( $notification['push']['notification']['android']['title'] ?? 'No Android notifications scheduled' ); ?>
 									</div>
 									<div class="notification-body">
 										<?php echo esc_html( $notification['push']['notification']['android']['alert'] ?? 'No message' ); ?>
