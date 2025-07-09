@@ -19,6 +19,7 @@ use Exception;
 class AirshipClient {
 
 
+
 	/**
 	 * Airship endpoint for API requests.
 	 */
@@ -230,5 +231,54 @@ class AirshipClient {
 		$response_body = wp_remote_retrieve_body( $response );
 
 		return json_decode( $response_body, true );
+	}
+
+	/**
+	 * Get recent notification responses from Airship
+	 *
+	 * @param int $limit Number of results to retrieve
+	 * @return array|\WP_Error
+	 */
+	public function get_notifications() {
+		$app_key       = get_option( 'coeditor_airship_app_key' );
+		$master_secret = get_option( 'coeditor_airship_master_secret' );
+
+		if ( ! $app_key || ! $master_secret ) {
+			return new \WP_Error( 'missing_credentials', 'Airship API credentials are missing.' );
+		}
+
+		$start = gmdate( 'Y-m-d\TH:i:s', strtotime( '-30 days' ) ); // ISO8601 in UTC
+		$end   = gmdate( 'Y-m-d\TH:i:s' ); // now
+
+		$url = add_query_arg(
+			[
+				'start' => $start,
+				'end'   => $end,
+				'limit' => 99,
+			],
+			'https://go.urbanairship.com/api/reports/responses/list'
+		);
+
+		$response = wp_remote_get(
+			$url,
+			[
+				'headers' => [
+					'Authorization' => 'Basic ' . base64_encode( $app_key . ':' . $master_secret ),
+					'Accept'        => 'application/vnd.urbanairship+json; version=3;',
+				],
+				'timeout' => 30,
+			]
+		);
+
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$code = wp_remote_retrieve_response_code( $response );
+		if ( $code !== 200 ) {
+			return new \WP_Error( 'airship_error', 'Failed to fetch notifications from Airship: ' . $code );
+		}
+
+		return json_decode( wp_remote_retrieve_body( $response ), true );
 	}
 }

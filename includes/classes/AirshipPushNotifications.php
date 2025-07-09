@@ -9,6 +9,7 @@ namespace Coeditor\WordpressAirship\Classes;
 
 class AirshipPushNotifications {
 
+
 	/**
 	 * Registers hooks for Airship push notifications.
 	 */
@@ -20,34 +21,35 @@ class AirshipPushNotifications {
 		add_action( 'init', [ __CLASS__, 'add_pushworker' ], 10 );
 		add_filter( 'query_vars', [ __CLASS__, 'add_pushworker_query_var' ], 10 );
 		add_action( 'parse_request', [ __CLASS__, 'handle_pushworker_request' ], 10 );
+		add_action( 'wp_ajax_coeditor_airship_get_notifications', [ __CLASS__, 'ajax_get_notifications' ] );
 	}
 
 	/**
 	 * Outputs the Airship push notification SDK script.
 	 */
 	public static function add_push_notification_script() {
-		$vapid_key = esc_js( get_option( 'coeditor_airship_vapid_key', '' ) );
-		$app_key   = esc_js( get_option( 'coeditor_airship_sdk_app_key', '' ) );
-		$token     = esc_js( get_option( 'coeditor_airship_sdk_token', '' ) );
+		 $vapid_key = esc_js( get_option( 'coeditor_airship_vapid_key', '' ) );
+		$app_key    = esc_js( get_option( 'coeditor_airship_sdk_app_key', '' ) );
+		$token      = esc_js( get_option( 'coeditor_airship_sdk_token', '' ) );
 		?>
-	<script type="text/javascript">
-		!function(n,r,e,t,c){
-			var i,o="Promise" in n,
-			u={
-				then:function(){ return u },
-				catch:function(n){ return n(new Error("Airship SDK Error: Unsupported browser")), u }
-			},
-			s=o ? new Promise((function(n,r){ i=function(e,t){ e ? r(e) : n(t) }})) : u;
-			s._async_setup=function(n){ if(o) try { i(null, n(c)) } catch(n) { i(n) } },
-			n[t]=s;
-			var a=r.createElement("script");
-			a.src=e, a.async=!0, a.id="_uasdk", a.rel=t, r.head.appendChild(a)
-		}(window, document, "https://aswpsdkus.com/notify/v2/ua-sdk.min.js", "UA", {
-			vapidPublicKey: "<?php echo $vapid_key; ?>",
-			appKey: "<?php echo $app_key; ?>",
-			token: "<?php echo $token; ?>",
-		});
-	</script>
+		<script type="text/javascript">
+			!function (n, r, e, t, c) {
+				var i, o = "Promise" in n,
+					u = {
+						then: function () { return u },
+						catch: function (n) { return n(new Error("Airship SDK Error: Unsupported browser")), u }
+					},
+					s = o ? new Promise((function (n, r) { i = function (e, t) { e ? r(e) : n(t) } })) : u;
+				s._async_setup = function (n) { if (o) try { i(null, n(c)) } catch (n) { i(n) } },
+					n[t] = s;
+				var a = r.createElement("script");
+				a.src = e, a.async = !0, a.id = "_uasdk", a.rel = t, r.head.appendChild(a)
+			}(window, document, "https://aswpsdkus.com/notify/v2/ua-sdk.min.js", "UA", {
+				vapidPublicKey: "<?php echo $vapid_key; ?>",
+				appKey: "<?php echo $app_key; ?>",
+				token: "<?php echo $token; ?>",
+			});
+		</script>
 		<?php
 	}
 
@@ -59,7 +61,7 @@ class AirshipPushNotifications {
 		?>
 		<script>
 			if ('serviceWorker' in navigator) {
-				window.addEventListener('load', function() {
+				window.addEventListener('load', function () {
 					navigator.serviceWorker.register('<?php echo esc_url( home_url( '/push-worker.js' ) ); ?>');
 				});
 			}
@@ -73,7 +75,7 @@ class AirshipPushNotifications {
 	public static function web_notifications_user_consent(): void {
 		?>
 		<script>
-			UA.then(function(sdk) {
+			UA.then(function (sdk) {
 				sdk.register();
 			});
 		</script>
@@ -113,7 +115,7 @@ class AirshipPushNotifications {
 				exit;
 			}
 
-			$theme_dir = get_stylesheet_directory();
+			$theme_dir   = get_stylesheet_directory();
 			$worker_path = $theme_dir . '/push-worker.js';
 			if ( file_exists( $worker_path ) ) {
 				readfile( $worker_path );
@@ -125,4 +127,26 @@ class AirshipPushNotifications {
 			exit;
 		}
 	}
+
+	/**
+	 * AJAX handler to get Airship notifications.
+	 */
+	public static function ajax_get_notifications() {
+		check_ajax_referer( 'coeditor_airship_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized', 403 );
+		}
+
+		require_once plugin_dir_path( __DIR__ ) . 'classes/airshipclient.php';
+		$client = new AirshipClient();
+		$data   = $client->get_notifications();
+
+		if ( is_wp_error( $data ) ) {
+			wp_send_json_error( $data->get_error_message(), 500 );
+		}
+
+		wp_send_json_success( $data );
+	}
+
 }

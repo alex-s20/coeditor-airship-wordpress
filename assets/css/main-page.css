@@ -17,7 +17,8 @@
 }
 
 .coeditor-airship__scheduled-notification-preview-ios,
-.coeditor-airship__scheduled-notification-preview-android {
+.coeditor-airship__scheduled-notification-preview-android,
+.coeditor-airship__scheduled-notification-preview-web {
 	background-color: rgba(0, 0, 0, 0.1);
 	display: flex;
 	gap: 1rem;
@@ -27,20 +28,23 @@
 }
 
 .coeditor-airship__scheduled-notification-preview-ios .notification-title,
-.coeditor-airship__scheduled-notification-preview-android .notification-title {
+.coeditor-airship__scheduled-notification-preview-android .notification-title,
+.coeditor-airship__scheduled-notification-preview-web .notification-title {
 	font-size: 1.1rem;
 	font-weight: bold;
 	margin-bottom: 0.4rem;
 }
 
 .coeditor-airship__scheduled-notification-preview-ios .notification-body,
-.coeditor-airship__scheduled-notification-preview-android .notification-body {
+.coeditor-airship__scheduled-notification-preview-android .notification-body,
+.coeditor-airship__scheduled-notification-preview-web .notification-body {
 	font-size: 0.9rem;
 	color: #555;
 }
 
 .coeditor-airship__scheduled-notification-preview-ios img,
-.coeditor-airship__scheduled-notification-preview-android img {
+.coeditor-airship__scheduled-notification-preview-android img,
+.coeditor-airship__scheduled-notification-preview-web img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
@@ -85,45 +89,53 @@
 	height: 2rem;
 }
 
+.coeditor-airship__web-icon {
+	background-color: #0073aa;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+}
+
 .coeditor-airship__scheduled-notification-details.coeditor-airship__scheduled-notification-details {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    margin: 20px 0;
+	width: 100%;
+	border-collapse: collapse;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	margin: 20px 0;
 }
 
 .coeditor-airship__scheduled-notification-details td {
-    border-top: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+	border-top: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
 }
 
 .coeditor-airship__scheduled-notification-details th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+	background-color: #f4f4f4;
+	font-weight: bold;
 }
 
 .coeditor-airship__scheduled-notification-details tr:nth-child(even) {
-    background-color: #f9f9f9;
+	background-color: #f9f9f9;
 }
 
 .coeditor-airship__scheduled-notification-details tr:hover {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .coeditor-airship__scheduled-notification-details a {
-    color: #0073aa;
-    text-decoration: none;
+	color: #0073aa;
+	text-decoration: none;
 }
 
 .coeditor-airship__scheduled-notification-details a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .coeditor-airship__scheduled-notification-details td:first-child {
-    font-weight: bold;
-    width: 30%;
+	font-weight: bold;
+	width: 30%;
 }
 
 .coeditor-airship__scheduled-notification-actions {
@@ -141,4 +153,46 @@
 			color: #fff;
 		}
 	}
+}
+
+.coeditor-airship__tab-nav {
+	margin-bottom: 1rem;
+}
+
+.coeditor-airship__nav-tab {
+	text-decoration: none;
+}
+
+.coeditor-airship__tab-pane {
+	display: none;
+}
+
+.coeditor-airship__tab-pane.active {
+	display: block;
+}
+
+.coeditor-airship__notification-list {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+	justify-content: center;
+}
+
+.coeditor-airship__notification-card {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 1rem;	
+	width: fit-content;
+}
+
+.coeditor-airship__notification-card p {
+	font-size: 0.9rem;
+	margin: 0;
 }
